@@ -1,6 +1,7 @@
 <template>
     <div>
-        <PageTitle></PageTitle>
+        <PageTitle BreadTitle="工作台"></PageTitle>
+        
     </div>
 </template>
 <script>

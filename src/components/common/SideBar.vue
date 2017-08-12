@@ -1,12 +1,12 @@
 <template>
   <div class="sidebar">
-    <Menu :theme="theme2">
+    <Menu :theme="theme2" accordion @on-select="change">
         <Submenu name="1">
             <template slot="title">
                 <Icon type="ios-paper"></Icon>
                 内容管理
             </template>
-            <Menu-item name="1-1">文章管理</Menu-item>
+            <Menu-item name="CRUD">文章管理</Menu-item>
             <Menu-item name="1-2">评论管理</Menu-item>
             <Menu-item name="1-3">举报管理</Menu-item>
         </Submenu>
@@ -41,6 +41,11 @@ export default {
   data(){
       return{
           theme2:'dark'
+      }
+  },
+  methods:{
+      change(name){
+          this.$router.push('/'+name);
       }
   }
 }

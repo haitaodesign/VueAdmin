@@ -4,7 +4,7 @@ import Hello from '@/components/Hello'
 import Home from '@/components/common/Home'
 import DashBoard from '@/components/page/DashBoard'
 import CRUD from '@/components/page/demo1/CRUD'
-
+import Login from '@/views/login/index'
 Vue.use(Router)
 
 export default new Router({
@@ -12,7 +12,7 @@ export default new Router({
   base:__dirname,
   routes: [
     {
-      path: '/',
+      path: '',
       component: Home,
       children:[
         {
@@ -20,11 +20,11 @@ export default new Router({
           component:DashBoard
         },
         {
-          path:'/DashBoard',
+          path:'/Home/DashBoard',
           component:DashBoard
         },
         {
-          path:'/CRUD',
+          path:'/Home/CRUD',
           component:CRUD
         }
       ]
@@ -32,6 +32,9 @@ export default new Router({
    {
      path:'*',
      component:Home
+   },{
+     path:'/Login',
+     component:Login
    }
   ]
 })

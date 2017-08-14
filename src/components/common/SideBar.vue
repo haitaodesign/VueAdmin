@@ -6,7 +6,7 @@
                 <Icon type="ios-paper"></Icon>
                 内容管理
             </template>
-            <Menu-item name="CRUD">文章管理</Menu-item>
+            <Menu-item name="Home/CRUD">文章管理</Menu-item>
             <Menu-item name="1-2">评论管理</Menu-item>
             <Menu-item name="1-3">举报管理</Menu-item>
         </Submenu>
@@ -45,6 +45,7 @@ export default {
   },
   methods:{
       change(name){
+          console.log(name);
           this.$router.push('/'+name);
       }
   }

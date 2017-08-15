@@ -19,7 +19,8 @@
     </div>
 </template>
 <script>
-import Cookies from '../../utils/auth.js'
+import Cookies from 'js-cookie'
+import {mapActions} from 'vuex'
 export default {
   data(){
       return{
@@ -39,19 +40,24 @@ export default {
       }
   },
   methods:{
+      ...mapActions([
+        'Login'
+      ]),
       handleSubmit(name){
           this.$refs[name].validate((valid)=>{
               if(valid){
                   //获取用户名和密码，发送请求登录
-                  Cookies.setCookieValue('isLogin',true,{expires:0})
                   this.$Message.success('登录成功！');
+                //   this.$store.state.isLogin=true;
+                  this.$store.dispatch('Login');
+                  this.$store.dispatch('GetUserInfo');
+                  Cookies.set('isLogin',true);
                   // 密码验证成功之后，路由重定向
                   this.$router.push('/');
 
               }else{
                   this.$Message.error('表单验证失败！');
               }
-              console.log(Cookies.getCookieValue('isLogin'));
           })
       }
   }

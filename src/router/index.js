@@ -7,34 +7,30 @@ import CRUD from '@/components/page/demo1/CRUD'
 import Login from '@/views/login/index'
 Vue.use(Router)
 
-export default new Router({
-  mode:'history',
-  base:__dirname,
-  routes: [
+
+export const constantRouteMap=[
+    {path:'/Login',component:Login},
     {
-      path: '',
-      component: Home,
-      children:[
-        {
-          path:'',
-          component:DashBoard
-        },
-        {
-          path:'/Home/DashBoard',
-          component:DashBoard
-        },
-        {
-          path:'/Home/CRUD',
-          component:CRUD
-        }
-      ]
-    },
-   {
-     path:'*',
-     component:Home
-   },{
-     path:'/Login',
-     component:Login
-   }
-  ]
+      path:'/',
+      component:Home,
+      redirect:'/DashBoard',
+      children:[{
+        path:'DashBoard',
+        component:DashBoard
+      },{
+        path:'CRUD',
+        component:CRUD
+      }]
+    },{
+      path:'*',
+      component:Home
+    }
+];
+
+
+
+
+
+export default new Router({
+  routes: constantRouteMap
 })

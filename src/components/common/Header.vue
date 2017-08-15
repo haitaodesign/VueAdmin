@@ -4,14 +4,14 @@
         <h1>VueAdmin</h1>
     </div>
     <div class="header-right">
-        <Dropdown>
+        <Dropdown @on-click="handleLogout()">
             <a href="javascript:void(0)">
-                管理员
+                {{userName}}
                 <Icon type="arrow-down-b"></Icon>
             </a>
-            <Dropdown-menu slot="list">
+            <Dropdown-menu slot="list" >
                 <Dropdown-item>修改密码</Dropdown-item>
-                <Dropdown-item>退出登录</Dropdown-item>
+                <Dropdown-item name="Logout">退出登录</Dropdown-item>
             </Dropdown-menu>
         </Dropdown>
     </div>
@@ -19,12 +19,22 @@
   
 </template>
 <script>
+import Cookies from 'js-cookie'
 export default {
     data(){
         return{
-
+            userName:this.$store.state.userName
+        }
+    },
+    mounted(){
+    },
+    methods:{
+        handleLogout(name){
+            Cookies.remove('isLogin');
+            this.$router.push('/Login');
         }
     }
+
 }
 </script>
 <style scoped>

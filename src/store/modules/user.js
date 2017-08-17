@@ -1,6 +1,5 @@
 // 导入api数据
-import fetch from '../../utils/axios.js'
-
+import {login} from '../../api/login'
 
 const user = {
     state:{

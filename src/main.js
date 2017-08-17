@@ -7,8 +7,11 @@ import iView  from 'iview'
 import 'iview/dist/styles/iview.css'
 import  Cookies from 'js-cookie'
 import store from './store'
+import AxiosPlugin from './utils/axios.js'
+import './mock/index.js'
 
 Vue.use(iView);
+Vue.use(AxiosPlugin,'$axios');
 Vue.config.productionTip = false
 
 // router.beforeEach((to,from,next)=>{
@@ -28,6 +31,7 @@ new Vue({
   store,
   created(){
     this.checkLogin();
+    console.log(this.$axios ? 'Axios works!' :'no');
   },
   template: '<App/>',
   components: { App },
@@ -35,7 +39,7 @@ new Vue({
     checkLogin(){
       console.log(Cookies.get('isLogin'));
       if(Cookies.get('isLogin')){
-        this.$router.push('/')
+        // this.$router.push('/')
       }else{
         this.$router.push('/Login');
       }

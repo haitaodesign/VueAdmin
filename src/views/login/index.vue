@@ -52,9 +52,18 @@ export default {
                   this.$store.dispatch('Login');
                   this.$store.dispatch('GetUserInfo');
                   Cookies.set('isLogin',true);
+                  Cookies.set('userName','lihaitao');
+                  this.$axios({
+                      method:'post',
+                      url:'/login',
+                      data:{
+                          userName:'lihaitao'
+                      }
+                  }).then(function(response){
+                      console.log(response.data);
+                  })
                   // 密码验证成功之后，路由重定向
                   this.$router.push('/');
-
               }else{
                   this.$Message.error('表单验证失败！');
               }

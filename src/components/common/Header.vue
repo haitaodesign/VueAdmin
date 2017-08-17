@@ -23,7 +23,7 @@ import Cookies from 'js-cookie'
 export default {
     data(){
         return{
-            userName:this.$store.state.userName
+            userName:Cookies.get('userName')
         }
     },
     mounted(){
@@ -31,6 +31,7 @@ export default {
     methods:{
         handleLogout(name){
             Cookies.remove('isLogin');
+            Cookies.remove('userName');
             this.$router.push('/Login');
         }
     }

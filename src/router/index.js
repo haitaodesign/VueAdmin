@@ -23,7 +23,8 @@ export const constantRouteMap=[
       }]
     },{
       path:'*',
-      component:Home
+      component:Home,
+      redirect:'/DashBoard'
     }
 ];
 

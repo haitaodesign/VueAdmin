@@ -7,11 +7,11 @@ import iView  from 'iview'
 import 'iview/dist/styles/iview.css'
 import  Cookies from 'js-cookie'
 import store from './store'
-import AxiosPlugin from './utils/axios.js'
+// import AxiosPlugin from './utils/axios.js'
 import './mock/index.js'
 
 Vue.use(iView);
-Vue.use(AxiosPlugin,'$axios');
+// Vue.use(AxiosPlugin,'$axios');
 Vue.config.productionTip = false
 
 // router.beforeEach((to,from,next)=>{

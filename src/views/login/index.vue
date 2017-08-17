@@ -50,7 +50,8 @@ export default {
                   this.$Message.success('登录成功！');
                 //   this.$store.state.isLogin=true;
                   this.$store.dispatch('Login');
-                  this.$store.dispatch('GetUserInfo');
+                console.log(this.$store.state.user.isLogin);
+                //   this.$store.dispatch('GetUserInfo');
                   Cookies.set('isLogin',true);
                   Cookies.set('userName','lihaitao');
                   this.$axios({

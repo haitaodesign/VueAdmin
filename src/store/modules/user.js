@@ -29,6 +29,7 @@ const user = {
         // 调用mutations里面的方法改变state状态，可以执行异步操作
         Login({commit,state}){
             commit('SET_ISLOGIN',true);
+            //向服务端请求数据，更改应用状态
         },
 
         //获取用户信息
@@ -37,3 +38,5 @@ const user = {
         }
     }
 }
+
+export default user;

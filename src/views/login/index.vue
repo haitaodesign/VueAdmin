@@ -13,7 +13,10 @@
                 </Input>
             </Form-item>
             <Form-item>
-                <Button type="primary" size="large" @click="handleSubmit('loginForm')">登录</Button>
+                <Button type="primary" size="large" :loading="isLoading" @click="handleSubmit('loginForm')">
+                    <span v-if="!isLoading">登录</span>
+                    <span v-else>Loading...</span>
+                    </Button>
             </Form-item>
         </Form>  
     </div>
@@ -26,8 +29,9 @@ export default {
       return{
           loginForm:{
               userName:'',
-              password:''
+              password:'',
           },
+          isLoading:false,
           loginRules:{
               userName:[
                   {required:true,message:'请填写用户名',trigger:'blur'}
@@ -46,24 +50,22 @@ export default {
       handleSubmit(name){
           this.$refs[name].validate((valid)=>{
               if(valid){
-                  //获取用户名和密码，发送请求登录
-                  this.$Message.success('登录成功！');
-                //   this.$store.state.isLogin=true;
+                  this.isLoading=true;
                   this.$store.dispatch('Login');
-                console.log(this.$store.state.user.isLogin);
-                //   this.$store.dispatch('GetUserInfo');
                   Cookies.set('isLogin',true);
-                  Cookies.set('userName','lihaitao');
+                  Cookies.set('userName',this.loginForm.userName);
                   this.$axios({
                       method:'post',
                       url:'/login',
                       data:{
-                          userName:'lihaitao'
+                          userName:this.loginForm.userName,
+                          password:this.loginForm.password
                       }
                   }).then(function(response){
                       console.log(response.data);
                   })
                   // 密码验证成功之后，路由重定向
+                  this.isLoading=false;
                   this.$router.push('/');
               }else{
                   this.$Message.error('表单验证失败！');

@@ -14,13 +14,10 @@ Vue.use(iView);
 // Vue.use(AxiosPlugin,'$axios');
 Vue.config.productionTip = false
 
-// router.beforeEach((to,from,next)=>{
-//   store.dispatch('Login');
-//   console.log(store.state.isLogin);
-//   if(store.state.isLogin){
-//   }
-//   next();
-// });
+router.beforeEach((to,from,next)=>{
+ 
+  next();
+});
 
 
 

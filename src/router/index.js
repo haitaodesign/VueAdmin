@@ -8,7 +8,7 @@ import Login from '@/views/login/index'
 Vue.use(Router)
 
 
-export const constantRouteMap=[
+const constantRouteMap=[
     {path:'/Login',component:Login},
     {
       path:'/',

@@ -29,10 +29,11 @@ const user = {
         // 调用mutations里面的方法改变state状态，可以执行异步操作
         Login({commit,state},loginform){
             return new Promise((resolve,reject)=>{
-                login(loginform.userName,loginform.password).then(response=>{
-                   if(response.data.code=='201'){
-                       commit('SET_ISLOGIN',true);
-                   }
+                login(loginform).then(response=>{
+                    commit('SET_ISLOGIN',true);
+                    resolve();
+                }).catch(error=>{
+                    reject(error);
                 })
             })
         },

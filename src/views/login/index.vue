@@ -54,16 +54,6 @@ export default {
                   this.$store.dispatch('Login');
                   Cookies.set('isLogin',true);
                   Cookies.set('userName',this.loginForm.userName);
-                  this.$axios({
-                      method:'post',
-                      url:'/login',
-                      data:{
-                          userName:this.loginForm.userName,
-                          password:this.loginForm.password
-                      }
-                  }).then(function(response){
-                      console.log(response.data);
-                  })
                   // 密码验证成功之后，路由重定向
                   this.isLoading=false;
                   this.$router.push('/');

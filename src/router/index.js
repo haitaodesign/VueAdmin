@@ -5,7 +5,8 @@ import Home from '@/components/common/Home'
 import DashBoard from '@/components/page/DashBoard'
 import CRUD from '@/components/page/demo1/CRUD'
 import Login from '@/views/login/index'
-Vue.use(Router)
+
+Vue.use(Router);
 
 
 const constantRouteMap=[

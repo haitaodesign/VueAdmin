@@ -5,7 +5,6 @@ import App from './App'
 import router from './router'
 import iView  from 'iview'
 import 'iview/dist/styles/iview.css'
-import  Cookies from 'js-cookie'
 import store from './store'
 // import AxiosPlugin from './utils/axios.js'
 import './mock/index.js'
@@ -26,20 +25,6 @@ new Vue({
   el: '#app',
   router,
   store,
-  created(){
-    this.checkLogin();
-    console.log(this.$axios ? 'Axios works!' :'no');
-  },
   template: '<App/>',
-  components: { App },
-  methods:{
-    checkLogin(){
-      console.log(Cookies.get('isLogin'));
-      if(Cookies.get('isLogin')){
-        // this.$router.push('/')
-      }else{
-        this.$router.push('/Login');
-      }
-    }
-  }
+  components: { App }
 })

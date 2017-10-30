@@ -22,7 +22,6 @@
     </div>
 </template>
 <script>
-import Cookies from 'js-cookie'
 import {mapActions} from 'vuex'
 export default {
   data(){
@@ -51,9 +50,6 @@ export default {
           this.$refs[name].validate((valid)=>{
               if(valid){
                   this.isLoading=true;
-                  this.$store.dispatch('Login');
-                  Cookies.set('isLogin',true);
-                  Cookies.set('userName',this.loginForm.userName);
                   // 密码验证成功之后，路由重定向
                   this.isLoading=false;
                   this.$router.push('/');
